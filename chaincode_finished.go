@@ -23,6 +23,8 @@ import (
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 )
 
+myLogger := shim.NewLogger("Test001")
+
 // SimpleChaincode example simple Chaincode implementation
 type SimpleChaincode struct {
 }
@@ -97,6 +99,13 @@ func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string)
 
 // read - query function to read key/value pair
 func (t *SimpleChaincode) read(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+	myLogger.Info("Info Message")
+	myLogger.Critical("Critical Message")
+	myLogger.Warning("Warning Message")
+	myLogger.Error("Error Message")
+	myLogger.Notice("Notice Message")
+	myLogger.Debug("Debug Message")
+
 	var key, jsonResp string
 	var err error
 
